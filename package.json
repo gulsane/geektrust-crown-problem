@@ -1,0 +1,29 @@
+{
+	"name": "geektrust-crown-problem",
+	"version": "1.0.0",
+	"description": "",
+	"main": "geektrust.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "mocha",
+		"start": "node geektrust.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/gulsane/geektrust-crown-problem.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/gulsane/geektrust-crown-problem/issues"
+	},
+	"homepage": "https://github.com/gulsane/geektrust-crown-problem#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"chai": "^4.3.0",
+		"mocha": "^8.3.0"
+	}
+}
