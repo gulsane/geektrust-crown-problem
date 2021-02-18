@@ -1,0 +1,3 @@
+const CIPHERWHEEL = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+module.exports = { CIPHERWHEEL };
