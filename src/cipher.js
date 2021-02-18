@@ -1,16 +1,17 @@
 class Cipher {
-	constructor(cipherWheel) {
+	constructor(cipherWheel, cipherKey) {
 		this.wheel = cipherWheel;
+		this.cipherKey = cipherKey;
 		this.wheelCycle = cipherWheel.length;
 	}
 
-	decryptLetter(cipherLetter, cipherKey) {
+	decryptLetter(cipherLetter) {
 		const firstPosition = 0;
 		const cipherLetterPosition = this.wheel.indexOf(cipherLetter);
 
 		if (cipherLetterPosition < firstPosition) return null;
 
-		let letterIndex = cipherLetterPosition - (cipherKey % this.wheelCycle);
+		let letterIndex = cipherLetterPosition - (this.cipherKey % this.wheelCycle);
 
 		if (letterIndex < firstPosition) {
 			letterIndex += this.wheel.length;
@@ -18,10 +19,10 @@ class Cipher {
 		return this.wheel[letterIndex];
 	}
 
-	decryptMessage(message, cipherKey) {
+	decryptMessage(message) {
 		let decryptedMessage = "";
 		message.split("").forEach((cipherLetter) => {
-			let letter = this.decryptLetter(cipherLetter, cipherKey);
+			let letter = this.decryptLetter(cipherLetter, this.cipherKey);
 			if (!letter) {
 				letter = cipherLetter;
 			}
