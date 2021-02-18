@@ -4,7 +4,7 @@ const { CIPHERWHEEL } = require("./constants");
 class Kingdom {
 	constructor(name, emblem) {
 		this.name = name;
-		this.emblem = emblem;
+		this.emblem = emblem.toUpperCase();
 		this.cipher = new Cipher(CIPHERWHEEL, emblem.length);
 	}
 
