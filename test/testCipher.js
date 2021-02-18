@@ -35,4 +35,35 @@ describe("#Cipher", () => {
 			assert.deepStrictEqual(actualValue, expectedValue);
 		});
 	});
+
+	describe("decryptMessage", () => {
+		it("Should validate the message with characters not in cipher wheel", () => {
+			const message = "#123";
+			const cipherKey = 4;
+			const actualValue = cipher.decryptMessage(message, cipherKey);
+			const expectedValue = "#123";
+			assert.deepStrictEqual(actualValue, expectedValue);
+		});
+		it("Should validate the message with space", () => {
+			const message = "BCD EFG";
+			const cipherKey = 1;
+			const actualValue = cipher.decryptMessage(message, cipherKey);
+			const expectedValue = "ABC DEF";
+			assert.deepStrictEqual(actualValue, expectedValue);
+		});
+		it("Should validate the message with letters in cipher wheel", () => {
+			const message = "OWL";
+			const cipherKey = 4;
+			const actualValue = cipher.decryptMessage(message, cipherKey);
+			const expectedValue = "KSH";
+			assert.deepStrictEqual(actualValue, expectedValue);
+		});
+		it("Should validate the message combination with symbols, alphabets and space", () => {
+			const message = "OWL$ OWL";
+			const cipherKey = 4;
+			const actualValue = cipher.decryptMessage(message, cipherKey);
+			const expectedValue = "KSH$ KSH";
+			assert.deepStrictEqual(actualValue, expectedValue);
+		});
+	});
 });

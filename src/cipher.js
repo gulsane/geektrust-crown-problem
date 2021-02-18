@@ -17,6 +17,18 @@ class Cipher {
 		}
 		return this.wheel[letterIndex];
 	}
+
+	decryptMessage(message, cipherKey) {
+		let decryptedMessage = "";
+		message.split("").forEach((cipherLetter) => {
+			let letter = this.decryptLetter(cipherLetter, cipherKey);
+			if (!letter) {
+				letter = cipherLetter;
+			}
+			decryptedMessage = decryptedMessage.concat(letter);
+		});
+		return decryptedMessage;
+	}
 }
 
 module.exports = { Cipher };
