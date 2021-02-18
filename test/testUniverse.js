@@ -43,4 +43,25 @@ describe("#Universe", () => {
 			assert.isUndefined(actualKingdom);
 		});
 	});
+
+	describe("sendMessage", () => {
+		const universe = new Universe();
+		const kingdom = { name: "LAND", emblem: "OWL" };
+		universe.addKingdom(kingdom);
+
+		it("Should return undefined if kingdom name is wrong", () => {
+			const actualResponse = universe.sendMessage("wrongKIngdom", "HELLO");
+			assert.isUndefined(actualResponse);
+		});
+
+		it("Should return true when kingdom and message are correct", () => {
+			const actualResponse = universe.sendMessage(kingdom.name, "ROZO");
+			assert.isTrue(actualResponse);
+		});
+
+		it("Should return false when message is incorrect", () => {
+			const actualResponse = universe.sendMessage(kingdom.name, "AOAO");
+			assert.isFalse(actualResponse);
+		});
+	});
 });

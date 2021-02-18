@@ -16,6 +16,14 @@ class Universe {
 	getKingdom(kingdomName) {
 		return this.kingdoms.find((kingdom) => kingdom.kingdomName === kingdomName);
 	}
+
+	sendMessage(kingdomName, message) {
+		const kingdom = this.getKingdom(kingdomName);
+		if (!kingdom) {
+			return;
+		}
+		return kingdom.validateMessage(message);
+	}
 }
 
 module.exports = { Universe };
