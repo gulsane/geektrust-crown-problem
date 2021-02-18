@@ -12,6 +12,10 @@ class Universe {
 	addKingdom({ name, emblem }) {
 		this.kingdoms.push(new Kingdom(name, emblem));
 	}
+
+	getKingdom(kingdomName) {
+		return this.kingdoms.find((kingdom) => kingdom.kingdomName === kingdomName);
+	}
 }
 
 module.exports = { Universe };
