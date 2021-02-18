@@ -8,6 +8,10 @@ class Kingdom {
 		this.cipher = new Cipher(CIPHERWHEEL, emblem.length);
 	}
 
+	get kingdomName() {
+		return this.name;
+	}
+
 	validateMessage(encryptedMessage) {
 		const decryptedMessage = this.cipher.decryptMessage(encryptedMessage);
 		const isValid = this.emblem.split("").every((letter) => {
