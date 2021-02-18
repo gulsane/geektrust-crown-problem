@@ -9,10 +9,18 @@ class Universe {
 		return this.kingdoms.some((kingdom) => kingdom.kingdomName === name);
 	}
 
-	addKingdom({ name, emblem }) {
-		this.kingdoms.push(new Kingdom(name, emblem));
+	get kingdomCount() {
+		return this.kingdoms.length;
 	}
 
+	addKingdoms(kingdoms = []) {
+		for (const kingdom of kingdoms) {
+			const { name, emblem } = kingdom;
+			if (!this.doesKingdomExists(name)) {
+				this.kingdoms.push(new Kingdom(name, emblem));
+			}
+		}
+	}
 	getKingdom(kingdomName) {
 		return this.kingdoms.find((kingdom) => kingdom.kingdomName === kingdomName);
 	}

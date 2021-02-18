@@ -7,7 +7,7 @@ describe("#Universe", () => {
 	describe("doesKingdomExists", () => {
 		const universe = new Universe();
 		const kingdom = { name: "zooland", emblem: "animal" };
-		universe.addKingdom(kingdom);
+		universe.addKingdoms([kingdom]);
 
 		it("Should return false if kingdom not exists", () => {
 			assert.isFalse(universe.doesKingdomExists("wrong name"));
@@ -18,19 +18,28 @@ describe("#Universe", () => {
 		});
 	});
 
-	describe("addKingdom", () => {
+	describe("addKingdoms", () => {
 		it("Should add the kingdom to the list of universe", () => {
 			const universe = new Universe();
 			const kingdom = { name: "LAND", emblem: "OWL" };
-			universe.addKingdom(kingdom);
+			universe.addKingdoms([kingdom]);
 			assert.isTrue(universe.doesKingdomExists(kingdom.name));
+			assert.strictEqual(universe.kingdomCount, 1);
+		});
+		it("Should not add the kingdom if it is already exists", () => {
+			const universe = new Universe();
+			const kingdom = { name: "LAND", emblem: "OWL" };
+			universe.addKingdoms([kingdom]);
+			universe.addKingdoms([kingdom]);
+			assert.isTrue(universe.doesKingdomExists(kingdom.name));
+			assert.strictEqual(universe.kingdomCount, 1);
 		});
 	});
 
 	describe("getKingdom", () => {
 		const universe = new Universe();
 		const kingdom = { name: "zooland", emblem: "animal" };
-		universe.addKingdom(kingdom);
+		universe.addKingdoms([kingdom]);
 
 		it("Should return the class kingdom if it is present in universe", () => {
 			const actualKingdom = universe.getKingdom(kingdom.name);
@@ -47,7 +56,7 @@ describe("#Universe", () => {
 	describe("sendMessage", () => {
 		const universe = new Universe();
 		const kingdom = { name: "LAND", emblem: "OWL" };
-		universe.addKingdom(kingdom);
+		universe.addKingdoms([kingdom]);
 
 		it("Should return undefined if kingdom name is wrong", () => {
 			const actualResponse = universe.sendMessage("wrongKIngdom", "HELLO");
