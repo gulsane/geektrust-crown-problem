@@ -32,5 +32,19 @@ describe("#Kingdom", () => {
 			const message = "ROZOL JS";
 			assert.isTrue(kingdom.validateMessage(message));
 		});
+		it("Should invalidate message if doesn't contains exact letters of the emblem", () => {
+			const name = "LAND";
+			const emblem = "PANDA";
+			const kingdom = new Kingdom(name, emblem);
+			const message = "PANDAUFSI";
+			assert.isFalse(kingdom.validateMessage(message));
+		});
+		it("Should validate the message with space", () => {
+			const name = "LAND";
+			const emblem = "OWL";
+			const kingdom = new Kingdom(name, emblem);
+			const message = "ROZOL JS";
+			assert.isTrue(kingdom.validateMessage(message));
+		});
 	});
 });

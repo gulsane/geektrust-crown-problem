@@ -13,12 +13,12 @@ class Kingdom {
 	}
 
 	validateMessage(encryptedMessage) {
-		const decryptedMessage = this.cipher.decryptMessage(encryptedMessage);
+		let decryptedMessage = this.cipher.decryptMessage(encryptedMessage);
+		decryptedMessage = decryptedMessage.split("");
 		const isValid = this.emblem.split("").every((letter) => {
-			const temp = decryptedMessage.split("");
-			let index = temp.indexOf(letter);
+			let index = decryptedMessage.indexOf(letter);
 			if (index !== -1) {
-				temp.splice(index, 1);
+				decryptedMessage.splice(index, 1);
 				return true;
 			}
 		});
